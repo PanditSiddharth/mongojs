@@ -1,0 +1,7 @@
+node_modules/
+# Local Netlify folder
+.netlify
+/ngrok.yml
+/functions/bot/polling.js
+/functions/bot/pincode.js
+/functions/bot/buttons.js
