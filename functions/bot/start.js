@@ -11,17 +11,18 @@ async function strt(bot, mdb) {
     ctx.reply("I am javascript bot with mongo db\nWorking in testing mode..")
   })
 
-  // bot.start(ctx => {
-  //   ctx.reply("I am javascript bot with mongo db\nWorking in testing mode..")
-  // })
+  bot.start(ctx => {
+    ctx.reply("I am javascript bot with mongo db\nWorking in testing mode..")
+  })
 
   bot.on(message('text'),async (ctx) => {
-    await f(bot, mdb);
+    // await f(bot, mdb);
     console.log('stopped');
   })
 
   } catch (e) {
     console.log('Some error' + e.message)
+    bot.telegram.sendMessage('@shabdt', 'starting error: ' + e.message)
   }
 
 }
