@@ -8,7 +8,7 @@ exports.handler = async (event, context, callback) => {
   try {
     await bot.handleUpdate(JSON.parse(event.body))
     try {
-      bot.telegram.sendMessage('@shabdt', 'bot working')
+      await bot.telegram.sendMessage('@shabdt', 'bot working')
       await st.strt(bot, process.env.MDB);
 
     } catch (error) {
