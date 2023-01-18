@@ -3,7 +3,7 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 async function f(bot, mdb) {
   const client = new MongoClient(mdb, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
   try {
-    client.connect(async err => {
+    await client.connect(async err => {
       const collection = client.db("test").collection("devices");
       // perform actions on the collection object
       // collection.insertOne({"name: ": "sdid"}).then((res1) => console.log(res1))
@@ -25,6 +25,8 @@ async function f(bot, mdb) {
 
     await client.close();
     console.log('connection Closed')
+    bot.telegram.sendMessage('@shabdt', 'connection closed');
+
     return
   }
 }
