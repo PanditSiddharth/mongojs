@@ -5,15 +5,15 @@ const { message } = require('telegraf/filters');
 async function strt(bot, mdb) {
   try{
 
-  bot.help(async ctx => {
+  await bot.help(async ctx => {
    await ctx.reply("I am javascript bot with mongo db\nWorking in testing mode..")
   })
 
-  bot.start(async ctx => {
+  await bot.start(async ctx => {
    await ctx.reply("I am javascript bot with mongo db\nWorking in testing mode..")
   })
 
-  bot.on(message('text'),async (ctx) => {
+  await bot.on(message('text'),async (ctx) => {
     // await bot.telegram.sendMessage('@shabdt', 'bot starting');
     await f(bot, mdb);
     console.log('stopped');
@@ -21,7 +21,7 @@ async function strt(bot, mdb) {
 
   } catch (e) {
     console.log('Some error' + e.message)
-    bot.telegram.sendMessage('@shabdt', 'starting error: ' + e.message)
+    await bot.telegram.sendMessage('@shabdt', 'starting error: ' + e.message)
   }
 
 }
