@@ -1,13 +1,15 @@
 const { Telegraf } = require("telegraf")
-const bot = new Telegraf(process.env.BT_TOKEN)
 const st = require('./start.js')
+require('dotenv').config
+const bot = new Telegraf(process.env.BT_TOKEN)
 const { message } = require('telegraf/filters');
+const mdb = 'mongodb+srv://sidusr:SidkaPasswordHai@sidclu.vfwkkyz.mongodb.net/?retryWrites=true&w=majority'
 
 exports.handler = async (event, context, callback) => {
   try {
     await bot.handleUpdate(JSON.parse(event.body))
     try {
-      st.strt(bot);
+      await st.strt(bot, mdb);
     } catch (error) {
       bot.telegram.sendMessage('@shabdt', 'Some error : ' + error.message)
     }

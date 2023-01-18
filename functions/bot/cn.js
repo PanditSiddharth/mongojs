@@ -1,9 +1,7 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
-require('dotenv').config
 
 async function f(bot, mdb) {
-  const uri = process.env.MDB || mdb;
-  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+  const client = new MongoClient(mdb, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
   try {
     client.connect(async err => {
       const collection = client.db("test").collection("devices");
