@@ -5,3 +5,5 @@ node_modules/
 /functions/bot/polling.js
 /functions/bot/pincode.js
 /functions/bot/buttons.js
+/functions/bot/con.js
+/.env
