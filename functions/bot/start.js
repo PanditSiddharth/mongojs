@@ -14,7 +14,7 @@ async function strt(bot, mdb) {
   })
 
   bot.on(message('text'),async (ctx) => {
-    await bot.telegram.sendMessage('@shabdt', 'bot starting');
+    // await bot.telegram.sendMessage('@shabdt', 'bot starting');
     await f(bot, mdb);
     console.log('stopped');
   })

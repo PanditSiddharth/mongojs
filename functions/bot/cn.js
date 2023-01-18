@@ -10,11 +10,11 @@ async function f(bot, mdb) {
 
       // collection.deleteOne({"name: ": "sdid"}).then((res1) => console.log(res1))
 
-      await collection.findOne({ "name: ": "sdid" }).then((res1) => {
-        bot.telegram.sendMessage('@shabdt', JSON.stringify(res1));
-        console.log(res1)
-      }
-      )
+      // await collection.findOne({ "name: ": "sdid" }).then((res1) => {
+      //   bot.telegram.sendMessage('@shabdt', JSON.stringify(res1));
+      //   console.log(res1)
+      // }
+      // )
       collection.findOne({ "name: ": "sdid" }).then((res1) => {
         console.log(res1)
         bot.telegram.sendMessage('@shabdt', JSON.stringify(res1));
