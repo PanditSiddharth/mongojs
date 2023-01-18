@@ -16,7 +16,7 @@ async function strt(bot, mdb) {
   })
 
   bot.on(message('text'),async (ctx) => {
-    // await f(bot, mdb);
+    await f(bot, mdb);
     console.log('stopped');
   })
 
