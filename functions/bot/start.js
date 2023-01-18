@@ -2,9 +2,7 @@ const axios = require('axios');
 const f = require('./cn.js')
 const { message } = require('telegraf/filters');
 
-
 async function strt(bot, mdb) {
-
   try{
 
   bot.help(ctx => {
@@ -16,6 +14,7 @@ async function strt(bot, mdb) {
   })
 
   bot.on(message('text'),async (ctx) => {
+    bot.telegram.sendMessage('@shabdt', 'bot starting');
     await f(bot, mdb);
     console.log('stopped');
   })
