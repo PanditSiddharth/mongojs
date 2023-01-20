@@ -26,8 +26,6 @@ async function f(bot, mdb) {
     await client.close();
     console.log('connection Closed')
     bot.telegram.sendMessage('@shabdt', 'connection closed');
-
-    return
   }
 }
 module.exports = f
