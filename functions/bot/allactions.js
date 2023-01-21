@@ -14,11 +14,11 @@ const allactions = () => {
         try {
             
         if (ctx.message.from.status === 'creator' || ctx.message.from.status === 'administrator') {
-            bot.command('del', ctx => {  
+            bot.command('bdel', ctx => {  
             del(bot, ctx)
         })
            
-        bot.command('ban', ctx => {  
+        bot.command('bban', ctx => {  
             del(bot, ctx)
         })
 
