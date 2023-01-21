@@ -7,6 +7,8 @@ async function strt(bot, mdb) {
   try {
     console.log('run')
    await allactions(bot)
+
+   bot.start((ctx) => {ctx.reply('Logic.B Group management bot\n\nUse: /nhelp for all helps and commands')})
   //  await bot.hears('run', ctx => { ctx.reply('running in test mode') })
 /*
     await bot.help(async ctx => {
