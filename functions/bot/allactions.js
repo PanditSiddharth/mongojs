@@ -1,6 +1,6 @@
 const ban = require('./adactions/ban.js')
 const dban = require('./adactions/dban.js')
-const kick = require('./adactions/kick,js')
+const kick = require('./adactions/kick.js')
 const del = require('./adactions/del.js')
 const restrict = require('./adactions/restrict.js')
 const purge = require('./adactions/purge.js')
@@ -9,13 +9,14 @@ const unmute = require('./adactions/unmute.js')
 const promote = require('./adactions/promote.js')
 const demote = require('./adactions/demote.js')
 
-const allactions = (bot) => {
-    bot.use(ctxx => {
+const allactions = async (bot) => {
+    console.log('allactions')
+    await bot.use(ctxx => {
         try {
-            
-        if (ctx.message.from.status === 'creator' || ctx.message.from.status === 'administrator') {
-            bot.command('bdel', ctx => {  
-            del(bot, ctx)
+        if (ctxx.message && (ctxx.message.from.status === 'creator' || ctxx.message.from.status === 'administrator')) {
+            bot.command('bddel',async ctx => { 
+                ctx.reply('del function invoking') 
+            await del(bot, ctx)
         })
            
         bot.command('bban', ctx => {  
@@ -24,7 +25,7 @@ const allactions = (bot) => {
 
         }
     } catch (error) {
-        ctxx.error(error)
+        console.error(error)
     }
     })
 }
