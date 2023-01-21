@@ -1,20 +1,18 @@
 const axios = require('axios');
-const f = require('./cn.js')
+// const f = require('./cn.js')
 const { message } = require('telegraf/filters');
 const allactions = require('./allactions')
-
 
 async function strt(bot, mdb) {
   try {
     console.log('run')
    await allactions(bot)
+  //  await bot.hears('run', ctx => { ctx.reply('running in test mode') })
 /*
     await bot.help(async ctx => {
       await ctx.reply("I am javascript bot with mongo db\nWorking in testing mode..")
       console.log(ctx)
     })
-    await bot.hears('run', ctx => { ctx.reply('running in test mode') })
-
 
     bot.command('st', (ctx) => {
       let t = 1;

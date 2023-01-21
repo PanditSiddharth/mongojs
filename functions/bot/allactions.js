@@ -1,4 +1,5 @@
 const ban = require('./adactions/ban.js')
+const unban = require('./adactions/unban.js')
 const dban = require('./adactions/dban.js')
 const kick = require('./adactions/kick.js')
 const del = require('./adactions/del.js')
@@ -8,26 +9,72 @@ const mute = require('./adactions/mute.js')
 const unmute = require('./adactions/unmute.js')
 const promote = require('./adactions/promote.js')
 const demote = require('./adactions/demote.js')
+const help = require('./adactions/help.js')
 
 const allactions = async (bot) => {
     console.log('allactions')
-    await bot.use(ctxx => {
-        try {
-        if (ctxx.message && (ctxx.message.from.status === 'creator' || ctxx.message.from.status === 'administrator')) {
-            bot.command('bddel',async ctx => { 
-                ctx.reply('del function invoking') 
-            await del(bot, ctx)
-        })
-           
-        bot.command('bban', ctx => {  
-            del(bot, ctx)
-        })
+    try {
+        let mem;
 
-        }
+
+        await bot.use(
+
+            async (ctx, next) => {
+                if (ctx.message) {
+                    mem = await bot.telegram.getChatMember(ctx.message.chat.id, ctx.message.from.id)
+                    if (mem.status === 'creator' || mem.status === 'administrator') {
+                        // ctx.reply(ctx.message.from.first_name + ' You are ' + mem.status)
+                        await bot.hears('run', ctx => { ctx.reply('running in test mode') })
+
+                        bot.command('ndel', async (ctx, next) => {
+                            ctx.reply('del function invoking')
+                            del(bot, ctx)
+                            // next(ctx)
+                        })
+
+                        bot.command('nunmute', async (ctx, next) => {
+                            unmute(bot, ctx)
+                            // next(ctx)
+                        })
+                        
+                        bot.command('nkick', async (ctx, next) => {
+                            kick(bot, ctx)
+                            // next(ctx)
+                        })                        
+                        bot.command('dban', async (ctx, next) => {
+                            dban(bot, ctx)
+                            // next(ctx)
+                        })                        
+                        bot.command('npromote', async (ctx, next) => {
+                            promote(bot, ctx)
+                            // next(ctx)
+                        })
+
+                        bot.command('ndemote', async (ctx) => {
+                            demote(bot, ctx)
+                        })
+
+                        bot.command('nban', async (ctx, next) => {
+                            ban(bot, ctx)
+                        })                       
+                        
+                        bot.command('nunban', async (ctx, next) => {
+                            unban(bot, ctx)
+                        }) 
+                       bot.command('nhelp', async (ctx, next) => {
+                            help(bot, ctx)
+                        })
+                    }
+                }
+                next(ctx)
+            }
+
+        )
+
     } catch (error) {
         console.error(error)
     }
-    })
+
 }
 
 module.exports = allactions
