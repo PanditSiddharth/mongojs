@@ -9,7 +9,7 @@ const unmute = require('./adactions/unmute.js')
 const promote = require('./adactions/promote.js')
 const demote = require('./adactions/demote.js')
 
-const allactions = () => {
+const allactions = (bot) => {
     bot.use(ctxx => {
         try {
             
@@ -28,5 +28,7 @@ const allactions = () => {
     }
     })
 }
+
+module.exports = allactions
 
 
