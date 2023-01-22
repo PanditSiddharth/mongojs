@@ -17,6 +17,7 @@ async function strt(bot, mdb) {
   //  bot.start((ctx) => {ctx.reply('Logic.B Group management bot\n\nUse: /nhelp for all helps and commands')})
   // })
    await bot.hears('run', (ctx) => { ctx.reply('running in test mode') })
+   await bot.hears('ru', (ctx) => { ctx.reply('running in test mode') })
 /*
     await bot.help(async ctx => {
       await ctx.reply("I am javascript bot with mongo db\nWorking in testing mode..")
