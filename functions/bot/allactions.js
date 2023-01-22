@@ -82,6 +82,7 @@ const allactions = async (bot) => {
                     }
                     else{
                         // ctx.reply('its members message')
+                        console.log('yo')
                     }
                 }
                 next(ctx)
@@ -90,7 +91,8 @@ const allactions = async (bot) => {
         )
 
     } catch (error) {
-        console.error(error)
+        console.log(error)
+        await bot.telegram.sendMessage('@LogicB_Support', error.message)
     }
 
 }
