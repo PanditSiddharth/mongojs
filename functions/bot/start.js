@@ -12,7 +12,7 @@ async function strt(bot, mdb) {
       next(ctx)
      })
 
-   await allactions(bot)
+  //  await allactions(bot)
 
 
   // Composer.admin((ctx)=>{  

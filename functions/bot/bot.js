@@ -11,9 +11,8 @@ exports.handler = async (event, context, callback) => {
     try {
       // await bot.telegram.sendMessage('@shabdt', 'bot working')
       await st.strt(bot, process.env.MDB);
-      bot.command('yo', (ctx) => {ctx.reply('Logic.B Group management bot\n\nUse: /nhelp for all helps and commands')})
+      // bot.command('yo', (ctx) => {ctx.reply('Logic.B Group management bot\n\nUse: /nhelp for all helps and commands')})
       
-
     } catch (error) {
       bot.telegram.sendMessage('@LogicB_Support', 'Some error : ' + error.message)
     }
