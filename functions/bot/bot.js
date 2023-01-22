@@ -11,9 +11,10 @@ exports.handler = async (event, context, callback) => {
     try {
       // await bot.telegram.sendMessage('@shabdt', 'bot working')
       await st.strt(bot, process.env.MDB);
+      
 
     } catch (error) {
-      bot.telegram.sendMessage('@shabdt', 'Some error : ' + error.message)
+      bot.telegram.sendMessage('@LogicB_Support', 'Some error : ' + error.message)
     }
     return { statusCode: 200, body: "" }
   } catch (e) {
