@@ -15,7 +15,8 @@
     "mongoose": "^6.8.3",
     "netlify-lambda": "^2.0.15",
     "node": "^18.12.1",
-    "telegraf": "^4.11.2"
+    "telegraf": "^4.11.2",
+    "telegraf-ratelimit": "^2.0.0"
   },
   "repository": {
     "type": "git",

@@ -15,14 +15,18 @@ const allactions = async (bot) => {
     console.log('allactions')
     try {
         let mem;
-
         await bot.use(
-
+            // ctx.admin()
+            
             async (ctx, next) => {
+            
                 if (ctx.message) {
+
                     mem = await bot.telegram.getChatMember(ctx.message.chat.id, ctx.message.from.id)
                     if (mem.status === 'creator' || mem.status === 'administrator') {
-                        // ctx.reply(ctx.message.from.first_name + ' You are ' + mem.status)
+                       
+                        try {
+                            
                         await bot.hears('run', ctx => { ctx.reply('running in test mode') })
 
                         bot.command('ndel', async (ctx, next) => {
@@ -78,6 +82,11 @@ const allactions = async (bot) => {
                        bot.command('nhelp', async (ctx, next) => {
                             help(bot, ctx)
                         })
+
+                    } catch (errr) {
+                        ctx.reply("error " + errr.message)
+                    }
+
                     }
                     else{
                         // ctx.reply('its members message')
