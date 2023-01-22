@@ -16,7 +16,6 @@ const allactions = async (bot) => {
     try {
         let mem;
 
-
         await bot.use(
 
             async (ctx, next) => {
@@ -27,9 +26,9 @@ const allactions = async (bot) => {
                         await bot.hears('run', ctx => { ctx.reply('running in test mode') })
 
                         bot.command('ndel', async (ctx, next) => {
-                            ctx.reply('del function invoking')
                             del(bot, ctx)
                             // next(ctx)
+                            
                         })
 
                         bot.command('nunmute', async (ctx, next) => {
