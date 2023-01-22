@@ -11,7 +11,7 @@ async function strt(bot, mdb) {
     //   next(ctx)
     //  })
 
-  //  await allactions(bot)
+   await allactions(bot)
 
   // Composer.admin((ctx)=>{  
   //  bot.start((ctx) => {ctx.reply('Logic.B Group management bot\n\nUse: /nhelp for all helps and commands')})
