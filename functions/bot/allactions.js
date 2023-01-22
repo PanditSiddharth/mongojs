@@ -23,6 +23,7 @@ const allactions = async (bot) => {
                 if (ctx.message) {
 
                     mem = await bot.telegram.getChatMember(ctx.message.chat.id, ctx.message.from.id)
+                    console.log(mem)
                     if (mem.status === 'creator' || mem.status === 'administrator') {
                        
                         try {
