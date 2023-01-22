@@ -37,6 +37,21 @@ const allactions = async (bot) => {
                             // next(ctx)
                         })
                         
+                        bot.command('nmute', async (ctx, next) => {
+                            mute(bot, ctx)
+                            // next(ctx)
+                        })
+
+                        bot.command('purge', async (ctx, next) => {
+                            purge(bot, ctx)
+                            // next(ctx)
+                        })
+
+                        bot.command('restrict', async (ctx, next) => {
+                            restrict(bot, ctx)
+                            // next(ctx)
+                        })
+
                         bot.command('nkick', async (ctx, next) => {
                             kick(bot, ctx)
                             // next(ctx)
@@ -64,6 +79,9 @@ const allactions = async (bot) => {
                        bot.command('nhelp', async (ctx, next) => {
                             help(bot, ctx)
                         })
+                    }
+                    else{
+                        // ctx.reply('its members message')
                     }
                 }
                 next(ctx)
