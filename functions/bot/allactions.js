@@ -41,7 +41,7 @@ const allactions = async (bot) => {
                             // next(ctx)
                         })
 
-                        bot.command('purge', async (ctx, next) => {
+                        bot.command('npurge', async (ctx, next) => {
                             purge(bot, ctx)
                             // next(ctx)
                         })
