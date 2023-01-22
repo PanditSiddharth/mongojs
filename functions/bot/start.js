@@ -1,16 +1,15 @@
 const axios = require('axios');
 const {Composer} = require('telegraf');
 // const f = require('./cn.js')
-const { message } = require('telegraf/filters');
 const allactions = require('./allactions')
 
 async function strt(bot, mdb) {
   try {
-    console.log('run')
-    Composer.admin(async (ctx, next)=>{  
-      await bot.start((ctx) => {ctx.reply('Logic.B Group management bot\n\nUse: /nhelp for all helps and commands')})
-      next(ctx)
-     })
+    // console.log('run')
+    // Composer.admin(async (ctx, next)=>{  
+    //   await bot.start((ctx) => {ctx.reply('Logic.B Group management bot\n\nUse: /nhelp for all helps and commands')})
+    //   next(ctx)
+    //  })
 
   //  await allactions(bot)
 
