@@ -18,7 +18,7 @@ const promote = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
 
       })
         .then(() => {
-          ctxx.reply(name + " you are promoted ")
+          ctxx.reply(name + " you are promoted")
         })
         .catch((err) => {
           console.log(err);
