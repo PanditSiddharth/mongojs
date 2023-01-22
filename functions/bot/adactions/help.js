@@ -1,7 +1,7 @@
 const help = (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
-   
+
     ctxx.reply(
-`Commands in bot
+        `Commands in bot
 
 /nhelp for help
 /ndel for deletion
@@ -14,7 +14,7 @@ const help = (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
 /ndemote for demote
 /nkick for kick
 `
-            )
+    )
 }
 
 module.exports = help

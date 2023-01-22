@@ -7,18 +7,17 @@ const allactions = require('./allactions')
 async function strt(bot, mdb) {
   try {
     console.log('run')
-    Composer.admin((ctx, next)=>{  
-      bot.start((ctx) => {ctx.reply('Logic.B Group management bot\n\nUse: /nhelp for all helps and commands')})
+    Composer.admin(async (ctx, next)=>{  
+      await bot.start((ctx) => {ctx.reply('Logic.B Group management bot\n\nUse: /nhelp for all helps and commands')})
       next(ctx)
      })
 
   //  await allactions(bot)
 
-
   // Composer.admin((ctx)=>{  
   //  bot.start((ctx) => {ctx.reply('Logic.B Group management bot\n\nUse: /nhelp for all helps and commands')})
   // })
-   await bot.hears('run', ctx => { ctx.reply('running in test mode') })
+   await bot.hears('run', (ctx) => { ctx.reply('running in test mode') })
 /*
     await bot.help(async ctx => {
       await ctx.reply("I am javascript bot with mongo db\nWorking in testing mode..")
