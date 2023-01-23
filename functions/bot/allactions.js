@@ -37,7 +37,7 @@ const allactions = async (bot) => {
                     return
             })
 
-            bot.on('message', (ctx, next) => { console.log(ctx.state); next(ctx)})
+            bot.on('message', (ctx, next) => { console.log('yo'); next(ctx)})
 
         try {
 
