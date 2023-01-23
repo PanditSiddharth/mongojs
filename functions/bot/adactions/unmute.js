@@ -38,7 +38,7 @@ const unmute = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
             const sleep = t => new Promise(r => setTimeout(r, t));
             try {
                 n = await bot.telegram.promoteChatMember(chat_id = ctxx.chat.id, user_id = ctxx.message.reply_to_message.from.id, can_send_messages = false, can_add_web_page_previews = true)
-                await sleep(2000)
+                await sleep(4000)
               
                 await ctxx.reply(ctxx.message.reply_to_message.from.first_name + " now you can speak")
             } catch (err) {
