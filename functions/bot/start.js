@@ -1,5 +1,5 @@
 const axios = require('axios');
-const {Composer} = require('telegraf');
+// const {Composer} = require('telegraf');
 // const f = require('./cn.js')
 const allactions = require('./allactions')
 
