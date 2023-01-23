@@ -5,7 +5,8 @@ const ban = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
                 ctxx.reply(`Banned user ${ctxx.message.reply_to_message.from.first_name}`);
                 console.log(result)
             })
-          .catch((err) => {if((err.message).includes('administrator')) ctxx.reply("I can't ban admin") });
+          .catch((err) => {if((err.message).includes('administrator')) 
+          return ctxx.reply("I can't ban admin") });
    
 }
 }
