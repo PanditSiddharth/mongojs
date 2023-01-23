@@ -23,12 +23,12 @@ const ban = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
         } catch (error) {   
         }
         });
-        await sleep(10)
+        await sleep(300)
         if(res.from)
         return
 
         ctxx.reply(`Banned user ${ctxx.message.reply_to_message.from.first_name}`);
-        await sleep(10)
+        await sleep(300)
 
     } catch (err) {
         try {

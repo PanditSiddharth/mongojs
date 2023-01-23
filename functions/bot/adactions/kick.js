@@ -25,7 +25,7 @@ const kick = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
             } catch (error) {   
             }
             });
-            await sleep(10)
+            await sleep(300)
             if(res.from)
             return
             
@@ -34,7 +34,7 @@ const kick = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
             if (res)
             await unban(bot, ctxx, { kk: true })
 
-            await sleep(10)
+            await sleep(300)
             ctxx.reply(`Kicked user ${ctxx.message.reply_to_message.from.first_name}`);
                
 
