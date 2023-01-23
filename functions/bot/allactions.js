@@ -29,7 +29,6 @@ const allactions = async (bot) => {
                         ctx.state.adm = true
                     }else {
                         ctx.state.adm = false
-
                     }
                     next(ctx)
                 }
@@ -43,69 +42,69 @@ const allactions = async (bot) => {
 
             await bot.hears('run', ctx => { ctx.reply('running in test mode') })
 
-            bot.command('ndel', async (ctx, next) => {
+            bot.command('dl', async (ctx, next) => {
                 if (ctx.state.adm)
                 del(bot, ctx)
                 // next(ctx)
 
             })
 
-            bot.command('nunmute', async (ctx, next) => {
+            bot.command('umt', async (ctx, next) => {
                 if (ctx.state.adm)
                 unmute(bot, ctx)
                 // next(ctx)
             })
 
-            bot.command('nmute', async (ctx, next) => {
+            bot.command('mt', async (ctx, next) => {
                 if (ctx.state.adm)
                 mute(bot, ctx)
                 // next(ctx)
             })
 
-            bot.command('npurge', async (ctx, next) => {
+            bot.command('prg', async (ctx, next) => {
                 if (ctx.state.adm)
                 purge(bot, ctx)
                 // next(ctx)
             })
 
-            bot.command('restrict', async (ctx, next) => {
+            bot.command('rst', async (ctx, next) => {
                 if (ctx.state.adm)
                 restrict(bot, ctx)
                 // next(ctx)
             })
 
-            bot.command('nkick', async (ctx, next) => {
+            bot.command('kk', async (ctx, next) => {
                 if (ctx.state.adm)
                 kick(bot, ctx)
                 // next(ctx)
             })
-            bot.command('dban', async (ctx, next) => {
+            bot.command('dbn', async (ctx, next) => {
                 if (ctx.state.adm)
                 dban(bot, ctx)
                 // next(ctx)
             })
-            bot.command('npromote', async (ctx, next) => {
+            bot.command('pmt', async (ctx, next) => {
                 if (ctx.state.adm)
                 promote(bot, ctx)
                 // next(ctx)
             })
 
-            bot.command('ndemote', async (ctx) => {
+            bot.command('dmt', async (ctx) => {
                 if (ctx.state.adm)
                 demote(bot, ctx)
             })
 
-            bot.command('nban', async (ctx, next) => {
+            bot.command('bn', async (ctx, next) => {
                 if (ctx.state.adm)
                 ban(bot, ctx)
             })
 
-            bot.command('nunban', async (ctx, next) => {
+            bot.command('ubn', async (ctx, next) => {
                 if (ctx.state.adm)
                 unban(bot, ctx)
             })
 
-            bot.command('nhelp', async (ctx, next) => {
+            bot.command('hlp', async (ctx, next) => {
                 if (ctx.state.adm)
                 help(bot, ctx)
             })
