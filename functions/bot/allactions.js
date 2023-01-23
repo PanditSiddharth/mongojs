@@ -23,8 +23,15 @@ const allactions = async (bot) => {
                 if (ctx.message) {
 
                     let mem = await bot.telegram.getChatMember(ctx.message.chat.id, ctx.message.from.id)
-                        .catch((err) => { return ctx.reply('Error getChatMember' + err.message) })
+                        .catch((err) => { 
+                            ctx.state.err = true
+                            return ctx.reply('Error getChatMember' + err.message) })
 
+                        if(ctx.state.err == true)
+                        return
+
+                        ctx.state.mem = mem
+                       
                     if (mem.status == 'creator' || mem.status == 'administrator'){
                         ctx.state.adm = true
                     }else {
@@ -36,7 +43,8 @@ const allactions = async (bot) => {
                     return
             })
 
-            bot.on('message', (ctx, next) => { console.log('yo'); next(ctx)})
+
+            // bot.on('message', (ctx, next) => { console.log('yo'); next(ctx)})
 
         try {
 
