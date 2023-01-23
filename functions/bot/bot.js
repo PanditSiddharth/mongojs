@@ -3,7 +3,7 @@ const st = require('./start.js')
 require('dotenv').config
 // const bot = new Telegraf(process.env.BT_TOKEN)
 const bot = new Telegraf(process.env.LOGICBTOKEN)
-const { message } = require('telegraf/filters');
+// const { message } = require('telegraf/filters');
 
 exports.handler = async (event, context, callback) => {
   try {
