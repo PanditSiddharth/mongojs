@@ -2,6 +2,9 @@ const unban = require("./unban");
 
 const kick = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
 
+    if (!ctxx.message.reply_to_message) 
+    return
+
     if (ctxx.botInfo.id == ctxx.message.reply_to_message.from.id) {
         try {
             return ctxx.reply("You can't kick me Lol")
@@ -11,9 +14,10 @@ const kick = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
     }
 
     if (ctxx.message.reply_to_message) {
+
         const sleep = t => new Promise(r => setTimeout(r, t));
         try {
-
+            
             let res = await bot.telegram.kickChatMember(ctxx.chat.id, ctxx.message.reply_to_message.from.id)
             .catch(async (err) => {
                 try {
