@@ -22,17 +22,18 @@ const allactions = async (bot) => {
             async (ctx, next) => {
                 if (ctx.message) {
                     let mem;
+                    const sleep = t => new Promise(r => setTimeout(r, t));
                     try{
-                        const sleep = t => new Promise(r => setTimeout(r, t));
+                        
                      mem = await bot.telegram.getChatMember(ctx.message.chat.id, ctx.message.from.id)
-                        await sleep(500)
+                        await sleep(1000)
                 }catch(err){ 
                             ctx.state.err = true
                             return ctx.reply('Error getChatMember' + err.message) }
 
                         if(ctx.state.err == true)
                         return
-
+                        await sleep(100)
                         ctx.state.mem = mem
                        
                     if (mem.status == 'creator' || mem.status == 'administrator'){
