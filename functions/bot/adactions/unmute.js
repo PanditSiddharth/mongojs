@@ -1,14 +1,16 @@
 const unban = require("./unban");
 const unmute = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
 
-
+    const sleep = t => new Promise(r => setTimeout(r, t));
     if (ctxx.message.reply_to_message) {
-
-        let rmem = await bot.telegram.getChatMember(ctxx.message.chat.id, ctxx.message.reply_to_message.from.id)
-            .catch((err) => {
+        let rmem;
+        try{
+        rmem = await bot.telegram.getChatMember(ctxx.message.chat.id, ctxx.message.reply_to_message.from.id)
+        await sleep(1000)
+        }catch(err) {
                 ctxx.state.rmem = false
                 return ctxx.reply('Umt admm error: ' + err.message)
-            })
+            }
 
         if (ctxx.state.rmem == false)
             return
@@ -36,7 +38,7 @@ const unmute = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
         if (ctxx.message.reply_to_message) {
            
             try {
-                const sleep = t => new Promise(r => setTimeout(r, t));
+              
                let n = await bot.telegram.promoteChatMember(chat_id = ctxx.chat.id, user_id = ctxx.message.reply_to_message.from.id, can_send_messages = false, can_add_web_page_previews = true)
                 await sleep(1000)
               
