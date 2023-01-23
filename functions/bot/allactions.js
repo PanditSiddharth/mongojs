@@ -21,9 +21,9 @@ const allactions = async (bot) => {
             async (ctx, next) => {
             
                 if (ctx.message) {
-
+                  
                     mem = await bot.telegram.getChatMember(ctx.message.chat.id, ctx.message.from.id)
-                   
+                   .catch((err)=> {return ctx.reply('Error getChatMember' + err.message)})
                     if (mem.status === 'creator' || mem.status === 'administrator') {
                        
                         try {
