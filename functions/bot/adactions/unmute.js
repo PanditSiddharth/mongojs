@@ -46,8 +46,10 @@ const unmute = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
             await sleep(10)
             if (n != true)
                 return
-
+            
+            if(n == true)
             await ctxx.reply(ctxx.message.reply_to_message.from.first_name + " now you can speak")
+            
             await sleep(10)
             console.log(n)
         }
