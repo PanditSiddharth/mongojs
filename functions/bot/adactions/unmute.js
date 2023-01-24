@@ -14,11 +14,9 @@ const unmute = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
     if (ctxx.state.rmem == false)
         return
 
-        await ctxx.state.sleep(100)
     if (ctxx.state.rmem.status == 'creator' || ctxx.state.rmem.status == 'administrator') {
         ctxx.state.admm = true
-        await ctxx.state.sleep(100)
-        return ctxx.reply(ctxx.message.reply_to_message.from.first_name + ' is admin and can speak already')
+        return await ctxx.reply(ctxx.message.reply_to_message.from.first_name + ' is admin and can speak already')
     } else {
         ctxx.state.admm = false
     }
