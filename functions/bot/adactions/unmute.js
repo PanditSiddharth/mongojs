@@ -5,12 +5,12 @@ const unmute = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
 
     try {
         ctxx.state.rmem = await bot.telegram.getChatMember(ctxx.message.chat.id, ctxx.message.reply_to_message.from.id)
-        await ctxx.state.sleep(10)
+        // await ctxx.state.sleep(10)
     } catch (err) {
         ctxx.state.rmem = false
         return ctxx.reply('Umt admm error: ' + err.message)
     }
-    
+
     if (ctxx.state.rmem == false)
         return
 
