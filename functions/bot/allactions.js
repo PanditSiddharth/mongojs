@@ -49,26 +49,26 @@ const allactions = async (bot) => {
 
         try {
 
-            await bot.hears('run', ctx => { ctx.reply('running in test mode') 
+            bot.hears('run', ctx => { ctx.reply('running in test mode') 
         console.log(ctx.state.sleep)
         })
 
             bot.command('dl', async (ctx, next) => {
                 if (ctx.state.adm)
-                del(bot, ctx)
+                await del(bot, ctx)
                 // next(ctx)
 
             })
 
             bot.command('umt', async (ctx, next) => {
                 if (ctx.state.adm)
-                unmute(bot, ctx)
+                await unmute(bot, ctx)
                 // next(ctx)
             })
 
             bot.command('mt', async (ctx, next) => {
                 if (ctx.state.adm)
-                mute(bot, ctx)
+                await mute(bot, ctx)
                 // next(ctx)
             })
 
@@ -86,7 +86,7 @@ const allactions = async (bot) => {
 
             bot.command('kk', async (ctx, next) => {
                 if (ctx.state.adm)
-                kick(bot, ctx)
+                await kick(bot, ctx)
                 // next(ctx)
             })
             bot.command('dbn', async (ctx, next) => {
