@@ -21,26 +21,24 @@ const allactions = async (bot) => {
         bot.use(
             async (ctx, next) => {
                 if (ctx.message) {
-                    let mem;
-                    const sleep = t => new Promise(r => setTimeout(r, t));
                     try{
-                        
-                     mem = await bot.telegram.getChatMember(ctx.message.chat.id, ctx.message.from.id)
-                        await sleep(1000)
+                    const sleep = t => new Promise(r => setTimeout(r, t));
+                    ctx.state.sleep = sleep;
+                     ctx.state.mem = await bot.telegram.getChatMember(ctx.message.chat.id, ctx.message.from.id)
+                        await sleep(200)
                 }catch(err){ 
                             ctx.state.err = true
                             return ctx.reply('Error getChatMember' + err.message) }
-
+                    // ctx.state.err = true
                         if(ctx.state.err == true)
                         return
-                        await sleep(100)
-                        ctx.state.mem = mem
                        
-                    if (mem.status == 'creator' || mem.status == 'administrator'){
+                    if (ctx.state.mem.status == 'creator' || ctx.state.mem.status == 'administrator'){
                         ctx.state.adm = true
                     }else {
                         ctx.state.adm = false
                     }
+                   
                     next(ctx)
                 }
                 else
@@ -52,7 +50,9 @@ const allactions = async (bot) => {
 
         try {
 
-            await bot.hears('run', ctx => { ctx.reply('running in test mode') })
+            await bot.hears('run', ctx => { ctx.reply('running in test mode') 
+        console.log(ctx.state.sleep)
+        })
 
             bot.command('dl', async (ctx, next) => {
                 if (ctx.state.adm)

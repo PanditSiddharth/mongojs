@@ -1,21 +1,19 @@
 const { Telegraf } = require("telegraf")
 const st = require('./start.js')
 require('dotenv').config
-// const bot = new Telegraf(process.env.BT_TOKEN)
 const bot = new Telegraf(process.env.LOGICBTOKEN)
-// const { message } = require('telegraf/filters');
+
+try {
+  st.strt(bot, process.env.MDB);
+  
+} catch (error) {
+  bot.telegram.sendMessage('@LogicB_Support', 'Some error : ' + error.message)
+}
 
 exports.handler = async (event, context, callback) => {
   try {
     await bot.handleUpdate(JSON.parse(event.body))
-    try {
-      // await bot.telegram.sendMessage('@shabdt', 'bot working')
-      await st.strt(bot, process.env.MDB);
-      // bot.command('yo', (ctx) => {ctx.reply('Logic.B Group management bot\n\nUse: /nhelp for all helps and commands')})
-      
-    } catch (error) {
-      bot.telegram.sendMessage('@LogicB_Support', 'Some error : ' + error.message)
-    }
+
     return { statusCode: 200, body: "" }
   } catch (e) {
     console.error("error in handler:", e)
