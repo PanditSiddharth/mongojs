@@ -19,10 +19,10 @@ const promote = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
         can_manage_video_chats: true
       })
 
+      await ctxx.state.sleep(10)
       await ctxx.reply(name + " you are promoted")
     }
   } catch (error) {
-    await ctxx.state.sleep(10)
     ctxx.reply('Error:' + err.message)
   }
 }

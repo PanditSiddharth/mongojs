@@ -98,7 +98,7 @@ const allactions = async (bot) => {
             })
             bot.command('pmt', async (ctx, next) => {
                 if (ctx.state.adm)
-                    promote(bot, ctx)
+                   await promote(bot, ctx)
                 // next(ctx)
             })
 
