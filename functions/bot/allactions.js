@@ -22,7 +22,7 @@ const allactions = async (bot) => {
             async (ctx, next) => {
                 if (ctx.message) {
                     try {
-                        ctx.state.sleep = t => new Promise(r => setTimeout(r, t));
+                        ctx.state.sleep = async t => new Promise(r => setTimeout(r, t));
                         ctx.state.mem = await bot.telegram.getChatMember(ctx.message.chat.id, ctx.message.from.id)
                         await ctx.state.sleep(200)
                     } catch (err) {
