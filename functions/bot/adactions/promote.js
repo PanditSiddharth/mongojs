@@ -6,7 +6,7 @@ const promote = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
       const userId = ctxx.message.reply_to_message.from.id;
       const chatId = ctxx.chat.id;
 
-      await bot.telegram.promoteChatMember(chatId, userId, {
+      let done = await bot.telegram.promoteChatMember(chatId, userId, {
         can_change_info: true,
         can_post_messages: true,
         can_edit_messages: true,
@@ -20,10 +20,11 @@ const promote = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
       })
 
       await ctxx.state.sleep(10)
+      if(done == true)
       await ctxx.reply(name + " you are promoted")
     }
   } catch (error) {
-    ctxx.reply('Error:' + err.message)
+    ctxx.reply(error.message)
   }
 }
 
