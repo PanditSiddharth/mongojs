@@ -3,17 +3,18 @@ const unmute = async (bot, ctxx) => {
     if (!ctxx.message.reply_to_message)
         return ctxx.reply('Please reply to user')
 
+
+    try {
+        ctxx.state.rmem = await bot.telegram.getChatMember(ctxx.message.chat.id, ctxx.message.reply_to_message.from.id)
+        await ctxx.state.sleep(100)
+        if(ctxx.state.rmem)
+        return await ctxx.reply(ctxx.message.reply_to_message.from.first_name + ' is admin and can speak already')
+    } catch (err) {
+        ctxx.state.rmem = false
+        return ctxx.reply('Umt admm error: ' + err.message)
+    }
 }
 
-//     try {
-//         ctxx.state.rmem = await bot.telegram.getChatMember(ctxx.message.chat.id, ctxx.message.reply_to_message.from.id)
-//         await ctxx.state.sleep(100)
-//         if(ctxx.state.rmem)
-//         return await ctxx.reply(ctxx.message.reply_to_message.from.first_name + ' is admin and can speak already')
-//     } catch (err) {
-//         ctxx.state.rmem = false
-//         return ctxx.reply('Umt admm error: ' + err.message)
-//     }
 
 //     if (ctxx.state.rmem == false)
 //         return
