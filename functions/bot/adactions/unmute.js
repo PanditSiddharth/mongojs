@@ -2,7 +2,7 @@
 const unmute = async (bot, ctxx) => {
     if (!ctxx.message.reply_to_message)
         return ctxx.reply('Please reply to user')
-
+        await ctxx.state.sleep(100)
 
  //   try {
       //  bot.telegram.getChatMember(ctxx.message.chat.id, ctxx.message.reply_to_message.from.id)
