@@ -5,7 +5,7 @@ const unmute = async (bot, ctxx) => {
 
 
     try {
-        ctxx.state.rmem = await bot.telegram.getChatMember(ctxx.message.chat.id, ctxx.message.reply_to_message.from.id)
+        ctxx.state.rmem = bot.telegram.getChatMember(ctxx.message.chat.id, ctxx.message.reply_to_message.from.id)
         await ctxx.state.sleep(100)
         // if(ctxx.state.rmem)
         return await ctxx.reply(ctxx.message.reply_to_message.from.first_name + ' is admin and can speak already')
