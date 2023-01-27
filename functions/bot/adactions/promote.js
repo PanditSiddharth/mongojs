@@ -1,6 +1,9 @@
 const promote = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
   try {
-    if (ctxx.message.reply_to_message) {
+
+
+    if (!ctxx.message.reply_to_message)
+    return await ctxx.reply('Please reply the user')
 
       const name = ctxx.message.reply_to_message.from.first_name;
       const userId = ctxx.message.reply_to_message.from.id;
@@ -20,11 +23,17 @@ const promote = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
       })
 
       await ctxx.state.sleep(10)
-      if(done == true)
-      await ctxx.reply(name + " you are promoted")
-    }
+      if (done == true)
+        await ctxx.reply(name + " you are promoted")
+    
   } catch (error) {
-    await ctxx.reply(error.message)
+    if(error.message.includes('promote') && error.message.includes('self')){
+    var subb = error.message.substr(19, error.message.length);
+    await ctxx.reply('C' + subb)
+    }
+    else{
+      await ctxx.reply(error.message)
+    }
   }
 }
 
