@@ -24,7 +24,7 @@ const promote = async (bot, ctxx, cn = -1, op1 = -1, op2 = -1, op3 = -3) => {
       await ctxx.reply(name + " you are promoted")
     }
   } catch (error) {
-    ctxx.reply(error.message)
+    await ctxx.reply(error.message)
   }
 }
 
