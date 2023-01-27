@@ -21,103 +21,105 @@ const allactions = async (bot) => {
         bot.use(
             async (ctx, next) => {
                 if (ctx.message) {
-                    try{
+                    try {
                         ctx.state.sleep = t => new Promise(r => setTimeout(r, t));
-                     ctx.state.mem = await bot.telegram.getChatMember(ctx.message.chat.id, ctx.message.from.id)
+                        ctx.state.mem = await bot.telegram.getChatMember(ctx.message.chat.id, ctx.message.from.id)
                         await ctx.state.sleep(200)
-                }catch(err){ 
-                            ctx.state.err = true
-                            return ctx.reply('Error getChatMember' + err.message) }
+                    } catch (err) {
+                        ctx.state.err = true
+                        return ctx.reply('Error getChatMember' + err.message)
+                    }
                     // ctx.state.err = true
-                        if(ctx.state.err == true)
+                    if (ctx.state.err == true)
                         return
-                       
-                    if (ctx.state.mem.status == 'creator' || ctx.state.mem.status == 'administrator'){
+
+                    if (ctx.state.mem.status == 'creator' || ctx.state.mem.status == 'administrator') {
                         ctx.state.adm = true
-                    }else {
+                    } else {
                         ctx.state.adm = false
                     }
-                   
-                    next(ctx)
+
+                    await next(ctx)
                 }
                 else
                     return
             })
 
 
-            // bot.on('message', (ctx, next) => { console.log('yo'); next(ctx)})
+        // bot.on('message', (ctx, next) => { console.log('yo'); next(ctx)})
 
         try {
 
-            bot.hears('run', ctx => { ctx.reply('running in test mode') 
-        console.log(ctx.state.sleep)
-        })
+            bot.hears('run', ctx => {
+                ctx.reply('running in test mode')
+                console.log(ctx.state.sleep)
+            })
 
             bot.command('dl', async (ctx, next) => {
                 if (ctx.state.adm)
-                await del(bot, ctx)
+                    await del(bot, ctx)
                 // next(ctx)
 
             })
 
             bot.command('umt', async (ctx, next) => {
                 if (ctx.state.adm)
-                await unmute(bot, ctx)
+                    await unmute(bot, ctx)
                 // next(ctx)
             })
 
             bot.command('mt', async (ctx, next) => {
                 if (ctx.state.adm)
-                await mute(bot, ctx)
+                    await mute(bot, ctx)
                 // next(ctx)
             })
 
             bot.command('prg', async (ctx, next) => {
                 if (ctx.state.adm)
-                purge(bot, ctx)
+                    purge(bot, ctx)
                 // next(ctx)
             })
 
             bot.command('rst', async (ctx, next) => {
                 if (ctx.state.adm)
-                restrict(bot, ctx)
+                    restrict(bot, ctx)
                 // next(ctx)
             })
 
             bot.command('kk', async (ctx, next) => {
                 if (ctx.state.adm)
-                await kick(bot, ctx)
+                    await kick(bot, ctx)
                 // next(ctx)
             })
             bot.command('dbn', async (ctx, next) => {
                 if (ctx.state.adm)
-                dban(bot, ctx)
+                    dban(bot, ctx)
                 // next(ctx)
             })
             bot.command('pmt', async (ctx, next) => {
                 if (ctx.state.adm)
-                promote(bot, ctx)
+                    promote(bot, ctx)
                 // next(ctx)
             })
 
             bot.command('dmt', async (ctx) => {
                 if (ctx.state.adm)
-                demote(bot, ctx)
+                    demote(bot, ctx)
             })
 
             bot.command('bn', async (ctx, next) => {
                 if (ctx.state.adm)
-                ban(bot, ctx)
+                    ban(bot, ctx)
             })
 
             bot.command('ubn', async (ctx, next) => {
                 if (ctx.state.adm)
-                unban(bot, ctx)
+                    unban(bot, ctx)
             })
 
             bot.command('hlp', async (ctx, next) => {
                 if (ctx.state.adm)
-                help(bot, ctx)
+                    help(bot, ctx)
             })
 
         } catch (errr) {
