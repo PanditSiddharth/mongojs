@@ -10,6 +10,7 @@ const unmute = require('./adactions/unmute.js')
 const promote = require('./adactions/promote.js')
 const demote = require('./adactions/demote.js')
 const help = require('./adactions/help.js')
+const info = require('./adactions/info.js')
 const toggle = require('./toggle.js')
 
 async function allactions(bot) {
@@ -115,6 +116,11 @@ async function allactions(bot) {
             bot.command('dmt', async (ctx) => {
                 if (ctx.state.adm)
                     demote(bot, ctx)
+            })
+
+            bot.command('inf', async (ctx) => {
+                if (ctx.state.adm)
+                    await info(bot, ctx)
             })
 
             bot.command('bn', async (ctx, next) => {
