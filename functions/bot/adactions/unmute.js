@@ -11,7 +11,7 @@ const unmute = async (bot, ctxx) => {
 
         /* ************************************************************************************** */
 
-        else if (ctxx.message.entities[1] && ctxx.message.entities[1].type == 'phone_number') {
+        else if (ctxx.message.entities[1] && ctxx.message.entities[1].type == 'phone_number' ) {
             const t = ctxx.message.entities[1]
             const userId = ctxx.message.text.substring(t.offset, t.length + t.offset)
             const name = ctxx.message.text.substring(t.offset, t.length + t.offset)
@@ -19,6 +19,13 @@ const unmute = async (bot, ctxx) => {
         }
 
         /* ************************************************************************************** */
+
+        else if (ctxx.message.entities && ctxx.message.text.search(/[0-9]/) != -1 && ctxx.message.text.length < 16) {
+            const t = ctxx.message.entities[0]
+            const userId = ctxx.message.text.substring(t.length + 1)
+            const name = userId
+            await unmt(bot, ctxx, userId, name)
+        }
 
         else if (ctxx.message.reply_to_message) {
             const name = ctxx.message.reply_to_message.from.first_name;
@@ -38,6 +45,7 @@ const unmute = async (bot, ctxx) => {
         /* ************************************************************************************** */
 
         else {
+            console.log(ctxx.message)
             return ctxx.reply('No user found');
         }
 

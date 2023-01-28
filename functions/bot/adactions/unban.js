@@ -23,7 +23,15 @@ const unban = async (bot, ctxx) => {
           const name = ctxx.message.reply_to_message.from.first_name;
           const userId = ctxx.message.reply_to_message.from.id;
           await unmt(bot, ctxx, userId, name)
+
       }
+
+      else if (ctxx.message.entities && ctxx.message.text.search(/[0-9]/) != -1 && ctxx.message.text.length < 16) {
+        const t = ctxx.message.entities[0]
+        const userId = ctxx.message.text.substring(t.length + 1)
+        const name = userId
+        await unmt(bot, ctxx, userId, name)
+    }
 
       /* ************************************************************************************** */
 
