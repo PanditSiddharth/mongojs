@@ -24,23 +24,26 @@ const mute = async (bot, ctxx) => {
         /* ************************************************************************************** */
 
         if (ctxx.state.rmem.status == 'creator')
-        return await ctxx.reply(name + " is Owner, I can't mute Creator")
+            return await ctxx.reply(name + " is Owner, I can't mute Creator")
 
         let m = await bot.telegram.getMe()
-        if(userId == m.id) 
-        return await ctxx.reply("I can't mute self")
+        if (userId == m.id)
+            return await ctxx.reply("I can't mute self")
 
-        if(ctxx.state.rmem.status == 'administrator')
+        if (ctxx.state.rmem.status == 'administrator')
             return await ctxx.reply(name + " is admin, I can't mute admin")
 
+        if (ctxx.state.rmem.status == 'restricted')
+            return await ctxx.reply(name + " is mute already")
+    
         /* ************************************************************************************** */
 
         try {
             let y = await bot.telegram.restrictChatMember(ctxx.chat.id, userId)
             ctxx.state.sleep(10)
 
-            if(y == true)
-            return ctxx.reply(`User ${name} has been muted`)
+            if (y == true)
+                return ctxx.reply(`User ${name} has been muted`)
         } catch (error) {
             return ctxx.reply(error.message)
         }

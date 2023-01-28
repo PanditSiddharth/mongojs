@@ -10,21 +10,22 @@ const unmute = require('./adactions/unmute.js')
 const promote = require('./adactions/promote.js')
 const demote = require('./adactions/demote.js')
 const help = require('./adactions/help.js')
+const toggle = require('./toggle.js')
 
-const allactions = async (bot) => {
+async function allactions(bot) {
     console.log('allactions')
     try {
         // let mem = { status: false};
         // let ctx;
         // let adm = false;
-
         bot.use(
             async (ctx, next) => {
+                // console.log(ctx.message)
                 if (ctx.message) {
                     try {
-                        ctx.state.sleep = async t => new Promise(r => setTimeout(r, t));
+                        ctx.state.sleep = async (t) => new Promise(r => setTimeout(r, t))
                         ctx.state.mem = await bot.telegram.getChatMember(ctx.message.chat.id, ctx.message.from.id)
-                        await ctx.state.sleep(20)
+                        await ctx.state.sleep(2)
                     } catch (err) {
                         ctx.state.err = true
                         return ctx.reply('Error getChatMember' + err.message)
@@ -41,25 +42,34 @@ const allactions = async (bot) => {
 
                     await next(ctx)
                 }
+
                 else
                     return
             })
 
 
         // bot.on('message', (ctx, next) => { console.log('yo'); next(ctx)})
-
         try {
 
-            bot.hears('run', ctx => {
-                ctx.reply('running in test mode')
-                console.log(ctx.state.sleep)
+            bot.hears('toggle', async (ctx) => {
+                await toggle(bot, ctx)
             })
+
+            bot.command('mention', async (ctx) => {
+                // Get user information from user ID
+                const user = await ctx.telegram.getChatMember(ctx.chat.id, 5329005022)
+              
+                let k = await bot.telegram.sendMessage(ctx.chat.id, `[.](tg://user?id=5329005022) this user is mentioned`, { parse_mode: "Markdown" });
+                await ctx.state.sleep(1)
+                bot.telegram.editMessageText(ctx.chat.id, k.message_id, undefined, `user this user is mentioned`);
+
+      
+              })
 
             bot.command('dl', async (ctx, next) => {
                 if (ctx.state.adm)
                     await del(bot, ctx)
                 // next(ctx)
-
             })
 
             bot.command('umt', async (ctx, next) => {
@@ -98,7 +108,7 @@ const allactions = async (bot) => {
             })
             bot.command('pmt', async (ctx, next) => {
                 if (ctx.state.adm)
-                   await promote(bot, ctx)
+                    await promote(bot, ctx)
                 // next(ctx)
             })
 
