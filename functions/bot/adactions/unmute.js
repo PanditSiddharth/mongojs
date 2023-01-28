@@ -16,7 +16,6 @@ const unmute = async (bot, ctxx) => {
         /* ************************************************************************************** */
 
         else if (ctxx.message.reply_to_message) {
-            console.log(ctxx.message.reply_to_message)
 
             const name = ctxx.message.reply_to_message.from.first_name;
             const userId = ctxx.message.reply_to_message.from.id;
@@ -24,7 +23,7 @@ const unmute = async (bot, ctxx) => {
         }
 
         else if (ctxx.message.entities[1] && ctxx.message.entities[1].type == 'phone_number') {
-            console.log(ctxx.message)
+            // console.log(ctxx.message)
 
             const t = ctxx.message.entities[1]
             const userId = ctxx.message.text.substring(t.offset, t.length + t.offset)
@@ -49,10 +48,6 @@ const unmute = async (bot, ctxx) => {
         /* ************************************************************************************** */
 
 
-
-        /* ************************************************************************************** */
-        /* ************************************************************************************** */
-
     } catch (error) {
         ctxx.reply('this' + error.message)
         console.log(error)
@@ -62,12 +57,12 @@ const unmute = async (bot, ctxx) => {
 
 module.exports = unmute
 
-const unmt = async (bot, ctxx, userId, name, yes = true) => {
-    if(yes){
+const unmt = async (bot, ctxx, userId, name) => {
+
     try {
         ctxx.state.rmem = await bot.telegram.getChatMember(ctxx.message.chat.id, userId)
         await ctxx.state.sleep(1)
-        console.log(ctxx.state.rmem)
+        name = ctxx.state.rmem.user.first_name;
     } catch (err) {
         return await ctxx.reply('here' + err.message)
     }
@@ -92,7 +87,7 @@ const unmt = async (bot, ctxx, userId, name, yes = true) => {
 
     if (ctxx.state.rmem.status != 'restricted')
         return await ctxx.reply(name + " is not muted and can speak already")
-    }
+    
     /* ************************************************************************************** */
 
     try {
